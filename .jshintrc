@@ -1,0 +1,33 @@
+{
+  "maxerr":       15,
+  "esversion":    6,
+  "bitwise"       : true,
+  "curly"         : false,
+  "eqeqeq"        : true,
+  "forin"         : true,
+  "freeze"        : true,
+  "futurehostile" : true,
+  "latedef"       : false,
+  "noarg"         : true,
+  "nonbsp"        : true,
+  "nonew"         : true,
+  "plusplus"      : false,
+
+  "undef"         : true,
+  "unused"        : "vars",
+
+  "browser"       : true,
+  "browserify"    : false,
+  "devel"         : true,
+  "jquery"        : true,
+  "node"          : true,
+  "worker"        : false,
+
+  "globals"       : {
+    "_": true,
+    "angular": true,
+    "moment": true,
+    "platform": true,
+    "sprintf": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "globals":{
+    "_": true,
+    "$": true,
+    "angular": true,
+    "moment": true,
+    "platform": true,
+    "sprintf": true
+  },
+  "plugins": [
+
+  ],
+  "rules": {
+    "block-spacing": "error",
+    "max-len": ["error", {
+      "code": 160,
+      "tabWidth": 2,
+      "ignoreUrls": true
+    }],
+    "no-console": "off",
+    "new-cap": "error",
+    "no-sequences": "error",
+    "quotes": ["error", "single"],
+    "wrap-iife":  ["error", "outside"]
+  }
+}
