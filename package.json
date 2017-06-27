@@ -7,6 +7,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-eslint": "^4.0.0",
     "jshint": "^2.9.4",
+    "klaw": "^2.0.0",
     "lodash": "^4.17.4",
     "map-stream": "^0.0.7",
     "minimist": "^1.2.0",
