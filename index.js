@@ -23,4 +23,6 @@ if( !commandName ) {
  */
 const CommandClass  = require('./lib/commands/' + commandName);
 let commandInstance = new CommandClass();
-commandInstance.run();
+commandInstance.run(function( err ){
+  console.error('Error: ', err);
+});
