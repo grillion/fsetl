@@ -22,8 +22,7 @@ if( !commandName ) {
  * @type {BaseCommand}
  */
 const CommandClass = require('./lib/commands/' + commandName);
-let commandInstance = new CommandClass();
-commandInstance.run(function( err, stats ){
+let commandInstance = new CommandClass(function( err, stats ){
   if( err ){
     console.error( 'Error: ', err );
     process.exit(1);
@@ -34,3 +33,4 @@ commandInstance.run(function( err, stats ){
     console.log('Records Deleted:  ');
   }
 });
+commandInstance.run();
