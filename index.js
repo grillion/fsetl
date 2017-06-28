@@ -21,8 +21,16 @@ if( !commandName ) {
  * Try including and running a command from the library
  * @type {BaseCommand}
  */
-const CommandClass  = require('./lib/commands/' + commandName);
+const CommandClass = require('./lib/commands/' + commandName);
 let commandInstance = new CommandClass();
-commandInstance.run(function( err ){
-  console.error('Error: ', err);
+commandInstance.run(function( err, stats ){
+  if( err ){
+    console.error( 'Error: ', err );
+    process.exit(1);
+  } else {
+    console.log('Process complete.');
+    console.log('Runtime: ', stats.timer);
+    console.log('Records Inserted: ');
+    console.log('Records Deleted:  ');
+  }
 });

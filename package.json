@@ -10,6 +10,7 @@
     "jshint": "^2.9.4",
     "klaw": "^2.0.0",
     "lodash": "^4.17.4",
+    "mongodb": "^2.2.2",
     "map-stream": "^0.0.7",
     "minimist": "^1.2.0",
     "pump": "^1.0.2",
