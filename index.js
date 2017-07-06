@@ -31,6 +31,7 @@ let commandInstance = new CommandClass(function( err, stats ){
     console.log('Runtime: ', stats.timer);
     console.log('Records Inserted: ');
     console.log('Records Deleted:  ');
+    process.exit(0);
   }
 });
 commandInstance.run();
