@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const LaunchSettings = require( './lib/util/LaunchSettings.js' );
+const LaunchSettings = require('./lib/util/LaunchSettings');
+const StatsCollector = require('./lib/util/StatsCollector');
 
 // Parse arguments
 LaunchSettings.setArgv(require('minimist')(process.argv.slice(2)));
@@ -28,9 +29,26 @@ let commandInstance = new CommandClass(function( err, stats ){
     process.exit(1);
   } else {
     console.log('Process complete.');
-    console.log('Runtime: ', stats.timer);
-    console.log('Records Inserted: ');
-    console.log('Records Deleted:  ');
+    console.log('Runtime: ', stats.timer.toString() );
+    console.log('Files Scanned:', StatsCollector.get('file_scan'));
+    console.log('Directories Skipped:', StatsCollector.get('dir_skip'));
+    console.log('----SQLite Stats----');
+    console.log('SQL Queries:', StatsCollector.get('sql_query'));
+    console.log('SQL Inserts:', StatsCollector.get('sql_read'));
+    console.log('SQL Reads:  ', StatsCollector.get('sql_insert'));
+    console.log('SQL Updates:', StatsCollector.get('sql_update'));
+    console.log('SQL Deletes:', StatsCollector.get('sql_delete'));
+
+    // mongo_read
+    // mongo_insert
+    // mongo_update
+    // mongo_delete
+
+    // es_read
+    // es_insert
+    // es_update
+    // es_delete
+
     process.exit(0);
   }
 });

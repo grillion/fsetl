@@ -5,6 +5,7 @@
     "elasticsearch": "^13.2.0",
     "from2": "^2.3.0",
     "fs-extra": "^3.0.1",
+    "graceful-fs": "^4.1.11",
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.4",
     "gulp-eslint": "^4.0.0",
