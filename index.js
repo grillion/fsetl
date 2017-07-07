@@ -32,10 +32,12 @@ let commandInstance = new CommandClass(function( err, stats ){
     console.log('Runtime: ', stats.timer.toString() );
     console.log('Files Scanned:', StatsCollector.get('file_scan'));
     console.log('Directories Skipped:', StatsCollector.get('dir_skip'));
+    console.log('Symlinks Skipped:', StatsCollector.get('sym_skip'));
+    console.log('Symlinks Skip other:', StatsCollector.get('sym_skip_other'));
     console.log('----SQLite Stats----');
     console.log('SQL Queries:', StatsCollector.get('sql_query'));
-    console.log('SQL Inserts:', StatsCollector.get('sql_read'));
-    console.log('SQL Reads:  ', StatsCollector.get('sql_insert'));
+    console.log('SQL Inserts:', StatsCollector.get('sql_insert'));
+    console.log('SQL Reads:  ', StatsCollector.get('sql_read'));
     console.log('SQL Updates:', StatsCollector.get('sql_update'));
     console.log('SQL Deletes:', StatsCollector.get('sql_delete'));
 

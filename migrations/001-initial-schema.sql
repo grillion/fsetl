@@ -5,6 +5,7 @@ CREATE TABLE files
   path TEXT NOT NULL,
   size UNSIGNED BIG INT NOT NULL,
   md5 VARCHAR(32),
+  md5_date BIGINT,
   modified BIGINT NOT NULL,
   date_created BIGINT NOT NULL,
   date_updated BIGINT NOT NULL
