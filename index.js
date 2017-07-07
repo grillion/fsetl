@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const LaunchSettings = require('./lib/util/LaunchSettings');
-const StatsCollector = require('./lib/util/StatsCollector');
+const stats = require('./lib/util/StatsCollector');
 
 // Parse arguments
 LaunchSettings.setArgv(require('minimist')(process.argv.slice(2)));
@@ -23,23 +23,31 @@ if( !commandName ) {
  * @type {BaseCommand}
  */
 const CommandClass = require('./lib/commands/' + commandName);
-let commandInstance = new CommandClass(function( err, stats ){
+let commandInstance = new CommandClass(function( err ){
   if( err ){
     console.error( 'Error: ', err );
     process.exit(1);
   } else {
     console.log('Process complete.');
-    console.log('Runtime: ', stats.timer.toString() );
-    console.log('Files Scanned:', StatsCollector.get('file_scan'));
-    console.log('Directories Skipped:', StatsCollector.get('dir_skip'));
-    console.log('Symlinks Skipped:', StatsCollector.get('sym_skip'));
-    console.log('Symlinks Skip other:', StatsCollector.get('sym_skip_other'));
+    console.log('Runtime: ', stats.getTimer('command').toString() );
+    console.log(' ');
+    console.log('----Filesystem Stats----');
+    console.log('Files Scanned:', stats.get('file_scan'));
+    console.log('Directories Skipped:', stats.get('dir_skip'));
+    console.log('Symlinks Skipped:', stats.get('sym_skip'));
+    console.log('Symlinks Skip other:', stats.get('sym_skip_other'));
+    console.log(' ');
+    console.log('----Hashing Stats ----');
+    console.log('MD5 Hashes:', stats.get('md5_count'));
+    console.log('MD5 total bytes:', stats.get('md5_bytes'));
+    console.log('MD5 total bytes/sec:', stats.get('md5_bytes') / stats.getTimer('command').getFloat() );
+    console.log(' ');
     console.log('----SQLite Stats----');
-    console.log('SQL Queries:', StatsCollector.get('sql_query'));
-    console.log('SQL Inserts:', StatsCollector.get('sql_insert'));
-    console.log('SQL Reads:  ', StatsCollector.get('sql_read'));
-    console.log('SQL Updates:', StatsCollector.get('sql_update'));
-    console.log('SQL Deletes:', StatsCollector.get('sql_delete'));
+    console.log('SQL Queries:', stats.get('sql_query'));
+    console.log('SQL Inserts:', stats.get('sql_insert'));
+    console.log('SQL Reads:  ', stats.get('sql_read'));
+    console.log('SQL Updates:', stats.get('sql_update'));
+    console.log('SQL Deletes:', stats.get('sql_delete'));
 
     // mongo_read
     // mongo_insert
