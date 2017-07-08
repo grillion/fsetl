@@ -41,6 +41,9 @@ commandInstance.run()
     console.log('Symlinks Skipped:', stats.get('sym_skip'));
     console.log('Symlinks Skip other:', stats.get('sym_skip_other'));
     console.log(' ');
+    console.log('----Mime Lookup Stats ----');
+    console.log('Mime Lookups:', stats.get('mime_lookup'));
+    console.log(' ');
     console.log('----Hashing Stats ----');
     console.log('MD5 Hashes:', stats.get('md5_count'));
     console.log('MD5 total bytes:', stats.get('md5_bytes'));
