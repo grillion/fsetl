@@ -23,11 +23,15 @@ if( !commandName ) {
  * @type {BaseCommand}
  */
 const CommandClass = require('./lib/commands/' + commandName);
-let commandInstance = new CommandClass(function( err ){
-  if( err ){
-    console.error( 'Error: ', err );
-    process.exit(1);
-  } else {
+let commandInstance = new CommandClass();
+
+// Run and wait for the promise result
+commandInstance.run()
+  .then( () => {
+
+    // Stop all timers
+    stats.stopTimer('*');
+
     console.log('Process complete.');
     console.log('Runtime: ', stats.getTimer('command').toString() );
     console.log(' ');
@@ -60,6 +64,9 @@ let commandInstance = new CommandClass(function( err ){
     // es_delete
 
     process.exit(0);
-  }
-});
-commandInstance.run();
+  })
+  .catch(err => {
+    'use strict';
+    console.error( 'Command Error: ', err );
+    process.exit(1);
+  });
