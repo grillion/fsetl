@@ -42,7 +42,10 @@ commandInstance.run()
     console.log('Symlinks Skip other:', stats.get('sym_skip_other'));
     console.log(' ');
     console.log('----Mime Lookup Stats ----');
-    console.log('Mime Lookups:', stats.get('mime_lookup'));
+    console.log('Mime Look-ups:', stats.get('mime_lookup'));
+    console.log(' ');
+    console.log('----FFPRobe Lookup Stats ----');
+    console.log('FFProbe Look-ups:', stats.get('ffprobe_lookup'));
     console.log(' ');
     console.log('----Hashing Stats ----');
     console.log('MD5 Hashes:', stats.get('md5_count'));
